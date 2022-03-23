@@ -4,8 +4,9 @@ function slide(div, h){
             h.textContent = 'Citeste mai putin 🠕'
     }
     else{
+      (div.style.display === 'none')
         div.style.display = 'none';
-        h.textContent = 'Citește mai mult'
+        h.textContent = 'Citește mai mult ↓'
     }
 }
 
@@ -39,7 +40,7 @@ button.addEventListener("click", () => {
 
 function generateHex() {
   let hexColor = "#";
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 6; i++) {
     hexColor += hex[getRandomNumber()];
   }
 
