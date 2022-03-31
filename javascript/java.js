@@ -48,5 +48,8 @@ function generateHex() {
 }
 
 function getRandomNumber() {
+  //Înmulțirea unui număr cu o fracție aleatorie 
+  //nu duce întotdeauna la valori întregi. 
+  //Prin urmare, folosim funcția Math.floor() pentru a scăpa de partea zecimală din numerele noastre.
   return Math.floor(Math.random() * hex.length);
 }
