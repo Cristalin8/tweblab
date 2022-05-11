@@ -1,3 +1,8 @@
+<?php
+	session_start();
+	//var_dump($_SESSION);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,21 +12,41 @@
 	<title>Document</title>
 </head>
 <body>
+	
 	<div class="nav-bar">
 		<ul>
-			<li> <a href="./istorie.html">Istorie</a></li>
-			<li> <a href="./componentcar.html">Componente masina</a></li>
-			<li> <a href="./carfunct.html">Functionarea automobil</a></li>
+			<li> <a href="./index.php">Automobil</a></li>
+			<li> <a href="../php/istorie.php">Istorie</a></li>
+			<li> <a href="../php/componentcar.php">Componente masina</a></li>
+			<li> <a href="../php/carfunct.php">Functionarea automobil</a></li>
+            <li> <a href="../php/sign_up.php">Sign Up</a></li>
+            <li> <a href="../php/contacts.php">Contacts</a></li>
+            <li> <a href="../php/sign_in.php">Sign in</a></li>
 			<li> <a href="https://ro.wikipedia.org/wiki/Automobil"  target="_blank">Wikipedia</a></li>
-			<li<><button id="btn" class="btn">Schimba culoarea </a></button></li>
+			<li<><button id="btn" class="btn">Theme </a></button></li>
 		</ul>
 	</div>	
 		<br>	
-			<h1  class="title">
-				<strong>
-					Automobil
-				</strong>
-			</h1>
+		<h1  class="title">
+			<strong>
+				Automobil  
+			</strong>
+		</h1>
+
+		<?php
+			if(isset($_SESSION['email'])) {
+				?>
+					Utilizatorul <?=$_SESSION['email']?> este logat <a href="php/logout.php"> Logout </a>
+				<?php
+			}
+			else
+			{
+				?>
+					Nu a fost logat nici un utilizator.
+				<?php
+			}
+		?>
+
 		<div class="block">
 			<table class="text">
 				<td>
@@ -38,6 +63,7 @@
 				 </td> 
 			</table>
 		</div>	
+		
 		<script src="../javascript/java.js"></script>
 </body>
 </html>

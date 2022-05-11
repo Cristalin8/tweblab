@@ -53,12 +53,3 @@ function getRandomNumber() {
   //Prin urmare, folosim funcția Math.floor() pentru a scăpa de partea zecimală din numerele noastre.
   return Math.floor(Math.random() * hex.length);
 }
-/*contact pagina*/
-var modal = document.getElementById('id01');
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
