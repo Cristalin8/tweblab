@@ -1,4 +1,4 @@
-$(function(){
+
 
     $("#fname_error_message").hide();
     $("#sname_error_message").hide();
@@ -27,13 +27,14 @@ $(function(){
      $("#password2").focusout(function() {
         check_retype_password();
      });
+     
     
      function check_fname() {
         var pattern = /^[a-zA-Z]*$/;
         var fname = $("#fname").val();
         if (pattern.test(fname) && fname !== '') {
            $("#fname_error_message").hide();
-           $("#fname").css("border-bottom","2px solid #E10909");
+           $("#fname").css("border-bottom","2px solid #34F458");
         } else {
            $("#fname_error_message").html("Ar trebui să conțină numai caractere");
            $("#fname_error_message").show();
@@ -65,7 +66,7 @@ $(function(){
            error_password = true;
         } else {
            $("#password_error_message").hide();
-           $("#password").css("border-bottom","2px solid #E10909");
+           $("#password").css("border-bottom","2px solid #34F458");
         }
      }
 
@@ -97,28 +98,53 @@ $(function(){
            error_email = true;
         }
      }
+function check_validation(){
+            error_fname = false;
+            error_sname = false;
+            error_email = false;
+            error_password = false;
+            error_retype_password = false;
 
+            check_fname();
+            check_sname();
+            check_email();
+            check_password();
+            check_retype_password();
+
+            if ( error_email === false && error_password === false) {
+            $("#error_error_message").html("Succes");
+            return true;
+         } else {
+            $("#error_error_message").html("Completati campurile");
+            return false;
+         }
+     }
     
-    
-     $("#form").submit(function() {
-        error_fname = false;
-        error_sname = false;
-        error_email = false;
-        error_password = false;
-        error_retype_password = false;
-
-        check_fname();
-        check_sname();
-        check_email();
-        check_password();
-        check_retype_password();
-
-        if (error_fname === false && error_sname === false && error_email === false && error_password === false && error_retype_password === false) {
-           alert("Inregistrare reusita");
-           return true;
-        } else {
-           alert("Vă rugăm să completați corect formularul");
-           return false;
-        }
-     });
-    });
+      
+         $("form").submit(function(event){
+         event.preventDefault();
+         var fname = $("#fname").val();
+         var sname = $("#sname").val();
+         var email = $("#email").val();
+         var password = $("#password").val();
+         var password2 = $("#password2").val();
+         if(check_validation() === true){
+   
+         $.ajax({
+                url: "sign-up-validation.php",
+                method: "POST",
+                data: {
+                  fname: fname,
+                  sname: sname,
+                  email: email,
+                  password: password,
+                  password2: password2},
+                dataType: "JSON",
+                success:function(result){
+                    $("#validationText").text(result);
+                }
+            });
+            }
+         });
+         
+  

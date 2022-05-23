@@ -1,10 +1,3 @@
-<?php 
-//session_start();
-if(!isset($success)){
-    $success = '';
-}
-?>
-
 <!DOCTYPE html>
 <html lang="ro">
 <head>
@@ -13,8 +6,6 @@ if(!isset($success)){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css"> 
     <link rel="stylesheet" href="../css/styleforma.css">
-    <script src="../javascript/jquery.js"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Sign in</title>
 </head>
 <body>
@@ -40,7 +31,7 @@ if(!isset($success)){
     
     <h1>Sign in</h1>
 
-    <p id="alert_error_message"></p>
+
 <div class="form_container">
 
 
@@ -56,24 +47,17 @@ if(!isset($success)){
             <br>
         <p class="error_form" id="password_error_message"></p>
         <input type="submit" id="submit" value="Send" name="submit">
-                <?php if(isset($email_error)){ ?>
-                    <p class="php_error"> <?php echo $email_error ?> </p>
-                <?php } ?>
-                <?php if(isset($password_error)){ ?>
-                    <p class="php_error"> <?php echo $password_error ?> </p>
-                <?php } ?>
-
-                <?php if(!isset($email_error) && !isset($password_error) ){ ?>
-                <p class="php_error"> <?php echo $success ?> </p>
-                <?php } ?>
+        <p id="validationText"></p> 
     </form>
+    
 </div>
 </div>
 </div>
 </div>
 </header>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="../javascript/jquery.js"></script>
 <script src="../javascript/sign-in-validation.js"></script>
 <script src="../javascript/java.js"></script>
+<script src="../javascript/validation-functions.js"></script>
 </body>
 </html>

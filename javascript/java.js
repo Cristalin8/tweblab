@@ -62,3 +62,31 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+
+
+
+
+
+function loginRequest() {
+  let uname = $("input[name='unameLog']").val();
+  let pwd = $("input[name='pwdLog']").val();
+
+  $.ajax({
+      type: "POST",
+      url: "http://localhost/TWEB/loginAction.php",
+      data: {username: uname, password: pwd},
+      dataType: "json",
+      success: (response) => {
+          if(response.status == true) {
+              $("#loginPage").html("<div class='container'><div class='serverData'>" + response.message + "</div></div>");
+              $(location). attr('href', 'http://localhost/TWEB/loginForm.php');
+          }
+          else {
+              $("#loginPage").html("<div class='container'><div class='serverData'>" + response.message + "</div></div>");
+          }
+      },
+      error: () => {
+          alert("Something went wrong. :(");
+      }
+  })
+}

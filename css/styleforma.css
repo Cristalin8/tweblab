@@ -126,7 +126,7 @@ margin-bottom: 5px;
 
 #password_error_message{
     position: absolute;
-    top: 235px;
+    top: 100px;
 }
 
 
@@ -152,3 +152,8 @@ margin-bottom: 5px;
     position: absolute;
     top: 33px;
 }
+#validationText{
+    font-family: calibri;
+    font-size: 15px;
+    margin-bottom: 5px;
+    }
